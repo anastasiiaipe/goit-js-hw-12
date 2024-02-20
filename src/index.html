@@ -4,7 +4,11 @@
     <meta charset="UTF-8" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Vanilla App Template</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap"
+      rel="stylesheet"
+    />
+    <title>GOIT-js-hw-12</title>
     <link
       rel="stylesheet"
       href="https://cdn.jsdelivr.net/npm/modern-normalize@2.0.0/modern-normalize.min.css"
@@ -12,20 +16,23 @@
     <link rel="stylesheet" href="./css/styles.css" />
   </head>
   <body>
-    <section class="img-section">
-      <form class="img-search-form">
-        <input
-          type="text"
-          name="query"
-          class="img-search-input"
-          placeholder="Search images..."
-        />
-        <button type="submit" class="button-search">Search</button>
-        <span class="loader"></span>
-        <ul class="gallery"></ul>
-        <button type="button" class="button-load">Load more</button>
-      </form>
-    </section>
+    <form class="img-search-form">
+      <input
+        type="search"
+        name="query"
+        class="img-search-input"
+        placeholder="Search images..."
+      />
+      <button class="img-search-btn" type="submit">Search</button>
+    </form>
+
+    <ul class="gallery"></ul>
+
+    <div class="loader-container">
+      <span class="loader hidden"></span>
+    </div>
+
+    <button type="button" class="load-more-btn hidden" hidden>Load more</button>
 
     <script type="module" src="./main.js"></script>
   </body>
