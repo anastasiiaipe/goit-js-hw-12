@@ -1,3 +1,5 @@
+'use strict';
+
 import iziToast from 'izitoast';
 import 'izitoast/dist/css/iziToast.min.css';
 
@@ -27,24 +29,23 @@ async function onFormSubmit(e) {
     showError('Sorry, there are no search terms entered. Please try again!');
     return;
   }
-
+  showLoaderEl();
   try {
-    showLoaderEl();
     const data = await fetchGallery(query, page);
     maxPage = Math.ceil(data.totalHits / 15);
     if (data.totalHits === 0) {
+      hideLoaderEl();
       showError(
         'Sorry, there are no images matching your search query. Please try again!'
       );
       return;
-    } else {
-      imageTemplate(data);
-      hideLoaderEl();
     }
+    imageTemplate(data);
   } catch (err) {
     showError(err);
   }
 
+  hideLoaderEl();
   checkBtnVisibleStatus();
   e.target.reset();
 }
@@ -70,11 +71,6 @@ async function onLoadMoreClick() {
     top: height * 2,
   });
 }
-
-// function renderImages(images) {
-//   const markup = imagesTemplate(images);
-//   galleryEl.insertAdjacentHTML('beforeend', markup);
-// }
 
 function showLoadBtn() {
   btnLoadMore.classList.remove('hidden');
